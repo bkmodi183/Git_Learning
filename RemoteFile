@@ -1,0 +1,20 @@
+Problem Statement (Scenario)
+
+1. A repository is created on GitHub and cloned locally.
+2. Two files are added locally and pushed successfully to GitHub.
+3. A new file is created and committed **directly on GitHub**.
+4. Another file is created and committed **locally**.
+5. When attempting to push the local changes, Git rejects the push because the remote branch has new commits not present locally.
+
+Issue:Local and remote branches have diverged — Git refuses to push until the histories are reconciled.
+
+Solution (Merge Remote Changes into Local)
+
+```bash
+git pull origin main --no-rebase
+git push origin main
+```
+
+* `git pull origin main --no-rebase` merges the remote commits into your local branch.
+* After resolving any merge conflicts (if present), you can push your combined changes to GitHub.
+
