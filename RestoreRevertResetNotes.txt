@@ -1,0 +1,9 @@
+Restore: If you have made certain changes in the file which are not committed yet and those changes to be restore back to intial.             then -> first check with "git diff" then "git restore "file_name". The previous command will restore the changes which were          made. "This command only useful when you have not commited any changes"
+Revert: Let's say you made certain changes in the file and committed also, but later you realise to revert the changes, In this case         since the change has already been commmited you can use the revert command to restore the file which was there previous to
+        the latest commit. "git log --oneline" to get the hash_id of commit which you want to revert then                                    "git revert "hash_id of previous commit"
+Reset: Now let's say there is a new guy who made 7 commits in total. And from the 4th commit onwards he made mistakes in the code.
+       Here the 3rd commit is correct one rest all after 3rd has the wrong code. In this case we can apply the revert command but 
+       we need to apply it four times. Instead of this we can use branch reset command. this is risky and not allowed to use. 
+       "git reset --soft/--hard "hash_id". Here since till 3rd commit everything was fine but problem occurs from 4th commit, so	    put the hash id of fourth commit to get back to the stage of 3rd commit.
+       "For reset commands there is no logs created so if you want to use it for safer side it wont save any hashid to track"
+
