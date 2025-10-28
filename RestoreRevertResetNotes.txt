@@ -1,13 +1,90 @@
-Restore: If you have made certain changes in the file which are not committed yet and those changes to be restore back to intial.            
-         then -> first check with "git diff" then "git restore "file_name". The previous command will restore the changes which were made. 
-         "This command only useful when you have not commited any changes"
-Revert: Let's say you made certain changes in the file and committed also, but later you realise to revert the changes inn this case since 
-        the change has already been commmited you can use the revert command to restore the file which was there previous to the latest commit. 
-        "git log --oneline" to get the hash_id of commit which you want to revert then  "git revert "hash_id of previous commit"
-Reset: Now let's say there is a new guy who made 7 commits in total. And from the 4th commit onwards he made mistakes in the code.
-       Here the 3rd commit is correct one rest all after 3rd has the wrong code. In this case we can apply the revert command but 
-       we need to apply it four times. Instead of this we can use branch reset command. this is risky and not allowed to use. 
-       "git reset --soft/--hard "hash_id". Here since till 3rd commit everything was fine but problem occurs from 4th commit, 
-       so put the hash id of fourth commit to get back to the stage of 3rd commit.
-       "For reset commands there is no logs created so if you want to use it for safer side it wont save any hashid to track"
+---
 
+## 🔄 Git Restore, Revert, and Reset — Explained
+
+### 🧩 **1. Restore**
+
+If you’ve made some changes in a file that **haven’t been committed yet** and you want to **discard those uncommitted changes**, you can use the `git restore` command.
+
+#### 💡 Steps:
+
+1. First, check the differences:
+
+   ```bash
+   git diff
+   ```
+2. Then, restore the file to its previous state:
+
+   ```bash
+   git restore <file_name>
+   ```
+
+> 📝 **Note:**
+> `git restore` only works for uncommitted changes. Once changes are committed, this command won’t affect them.
+
+---
+
+### 🔁 **2. Revert**
+
+If you’ve made some changes, **committed them**, and later realize you want to **undo those commits**, use the `git revert` command.
+
+#### 💡 Steps:
+
+1. Check the commit history:
+
+   ```bash
+   git log --oneline
+   ```
+2. Copy the **commit hash** of the commit you want to revert.
+3. Run:
+
+   ```bash
+   git revert <commit_hash>
+   ```
+
+This creates a **new commit** that undoes the changes introduced by the specified commit, without rewriting history.
+
+> 📝 **Note:**
+> `git revert` is safe for shared repositories because it doesn’t alter the commit history — it just adds a new commit that reverses the previous one.
+
+---
+
+### ⚙️ **3. Reset**
+
+Now, imagine someone made **7 commits**, and from the **4th commit onward**, the code is incorrect.
+The **3rd commit** is the last known good state.
+
+You could use `git revert` four times (to undo commits 4, 5, 6, and 7),
+but instead, you can **move the branch pointer** back to the 3rd commit using `git reset`.
+
+#### 💡 Command:
+
+```bash
+git reset --soft <commit_hash>
+```
+
+or
+
+```bash
+git reset --hard <commit_hash>
+```
+
+* `--soft` keeps your changes staged.
+* `--hard` discards everything after the specified commit (use with caution).
+
+> 🧨 **Warning:**
+> `git reset` rewrites history and doesn’t create any log of removed commits.
+> This makes it risky, especially for shared repositories.
+> Use it only when you’re sure you don’t need the later commits.
+
+---
+
+### ✅ **Summary Table**
+
+| Command       | Used For                       | Affects Commits?          | Safe for Shared Repos? | Description                                  |
+| ------------- | ------------------------------ | ------------------------- | ---------------------- | -------------------------------------------- |
+| `git restore` | Undo uncommitted changes       | ❌ No                      | ✅ Yes                  | Restores file content before commit          |
+| `git revert`  | Undo committed changes         | ✅ Yes (adds a new commit) | ✅ Yes                  | Creates a new commit that reverses changes   |
+| `git reset`   | Move HEAD to a previous commit | ✅ Yes (rewrites history)  | ⚠️ No                  | Removes commits from history — use carefully |
+
+---
