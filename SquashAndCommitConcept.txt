@@ -1,0 +1,126 @@
+--------------------------------------------
+Git Concept: Squash using 'git merge --squash'
+--------------------------------------------
+
+Definition:
+------------
+The 'git merge --squash' command is used to combine all commits from one branch into a single commit
+when merging it into another branch. Instead of merging the full commit history of the source branch,
+it gathers all the changes as one combined set and stages them for a single new commit.
+
+This is another way of performing a "squash" — similar in purpose to 'git rebase -i', but done during
+a merge instead of a rebase.
+
+In short:
+    git merge --squash
+means “take all the changes from this branch, but don’t bring the commits — I’ll make one new commit myself.”
+
+--------------------------------------------
+Your Example and Step-by-Step Process
+--------------------------------------------
+You created a branch named 'stagging' (for practice) and performed three commits on a file named
+'SquashConcept.txt', each time adding a new line and committing it:
+
+1. Added first line and committed it.
+2. Added second line and committed it.
+3. Added third line and committed it.
+
+Your commit history in the 'stagging' branch looked like this:
+
+    main:        A
+                   \
+                    B --- C --- D   ← stagging
+
+Where:
+- A = Last commit on main
+- B, C, D = Your three small commits on the 'stagging' branch
+
+Now, you switched to the main branch and ran:
+
+    git checkout main
+    git merge --squash stagging
+    git commit -m "added the stagging file by learning the squash command"
+
+Here’s what happened internally:
+- Git took all the changes from commits B, C, and D in the 'stagging' branch.
+- It staged all of them as one combined set of changes (but did not record the individual commits).
+- When you ran 'git commit', a single new commit was created on 'main' containing all those changes.
+
+--------------------------------------------
+Diagram View
+--------------------------------------------
+
+Before merge --squash:
+----------------------
+    A --- B --- C --- D    ← stagging
+     \
+      (main)
+
+After merge --squash:
+---------------------
+    A --- E    ← main (single squashed commit)
+          \
+           (B, C, D changes combined into E)
+
+Explanation:
+Commit E on the main branch now includes all the content from commits B, C, and D,
+but the history of those commits is not carried over. It’s as if you made all those
+changes in one big commit.
+
+--------------------------------------------
+Why This Is Useful:
+--------------------
+- It keeps your main branch history clean and concise.
+- It’s perfect when you want to include all the work from a feature or test branch
+  without adding multiple small or experimental commits.
+- It’s useful for merging learning or experimental branches where the detailed
+  commit history is not needed.
+
+--------------------------------------------
+Comparison with 'git rebase -i' Squash:
+--------------------------------------------
+| Aspect                      | git rebase -i                     | git merge --squash                 |
+|------------------------------|-----------------------------------|------------------------------------|
+| Where it's used              | On a single branch                | Between two branches               |
+| Purpose                      | Combine commits before merging    | Combine commits while merging      |
+| Keeps old commits?           | Rewrites them as one              | Discards them and creates one new  |
+| Creates merge commit?        | No                                | No (creates a new squashed commit) |
+| Best for                     | Cleaning feature branch history   | Merging into main with one commit  |
+
+--------------------------------------------
+Real-World Scenario:
+--------------------
+Imagine you are developing a new feature in a separate branch called 'feature-login'.
+You make several small commits while experimenting and debugging:
+
+    feature-login:
+        B - Added login form HTML
+        C - Connected backend API
+        D - Fixed validation
+        E - Adjusted styling
+
+Before merging to 'main', you want to keep your history clean and don’t want to see all
+those small commits in production.
+
+You can do this:
+
+    git checkout main
+    git merge --squash feature-login
+    git commit -m "Add complete user login feature"
+
+Result:
+Your 'main' branch now has one clean commit representing the entire login feature.
+This keeps your project history organized and easy to follow.
+
+--------------------------------------------
+Summary:
+----------
+- 'git merge --squash' combines multiple commits from a branch into one.
+- It stages all changes together, then lets you create a single new commit.
+- Ideal for merging experimental or feature branches with multiple small commits.
+- Keeps the main branch history clean and readable.
+
+--------------------------------------------
+End of Notes
+--------------------------------------------
+
