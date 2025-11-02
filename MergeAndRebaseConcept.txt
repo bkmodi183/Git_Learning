@@ -16,7 +16,15 @@ Command example:
     git checkout main
     git merge feature
 
-This will merge all commits from the 'feature' branch into 'main', creating a merge commit if needed.
+Visual Example of Merge:
+
+      A---B---C--------M   ← main
+           \      /
+            D----E       ← feature
+
+Here:
+- D and E are commits in the 'feature' branch
+- M is the merge commit created in 'main' combining changes from feature
 
 Advantages of merging:
 - Keeps a complete history of all branches and merges.
@@ -48,7 +56,23 @@ Command example:
     git checkout feature
     git rebase main
 
-This command takes the commits from the 'feature' branch and replays them on top of the latest 'main' branch.
+Visual Example of Rebase:
+
+Before rebase:
+
+      A---B---C    ← main
+           \
+            D---E  ← feature
+
+After rebase (feature rebased on main):
+
+      A---B---C    ← main
+                 \
+                  D'---E'  ← feature
+
+Here:
+- D' and E' are copies of D and E replayed on top of main
+- Commit history is linear and no merge commit is created
 
 Advantages of rebasing:
 - Produces a cleaner, linear commit history.
