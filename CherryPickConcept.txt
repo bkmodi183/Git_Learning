@@ -1,0 +1,45 @@
+--------------------------------------------
+Git Command: git cherry-pick
+--------------------------------------------
+
+Definition:
+------------
+The 'git cherry-pick' command is used to apply the changes introduced by a specific commit (or multiple commits)
+from one branch onto another branch without merging the entire branch. It effectively copies the selected commit's
+changes and recreates them as a new commit on the current branch. The original commit remains unchanged; only its
+modifications are applied to your target branch.
+
+Use Case:
+----------
+The main use case for 'git cherry-pick' is to selectively bring specific commits from one branch into another.
+It is particularly useful when a branch (for example, 'dev') has several commits, but you only need one particular
+fix or feature in another branch (for example, 'main' or 'production') without merging all the other changes.
+
+Typical situations include:
+- Applying a hotfix from a development branch directly to a production branch.
+- Reusing a specific feature or bug fix from another branch.
+- Recovering a useful commit that was lost or left behind during rebasing or resets.
+
+Real-World Example:
+--------------------
+Imagine a software team maintaining two branches:
+- 'dev' for ongoing feature development.
+- 'main' for stable production releases.
+
+A developer fixed a critical login bug on the 'dev' branch with the commit hash a1b2c3d.
+The production system (on 'main') urgently needs that same fix, but the team cannot merge
+the entire 'dev' branch because it contains incomplete features.
+
+To bring only the bug-fix commit into 'main', use the following commands:
+
+    git checkout main
+    git cherry-pick a1b2c3d
+
+Git will apply the exact same changes introduced in that specific commit from 'dev' onto 'main'
+and create a new commit representing the same fix. This allows the production branch to receive
+the necessary bug fix without merging unrelated or unstable code from development.
+
+--------------------------------------------
+End of Notes
+--------------------------------------------
+
