@@ -1,0 +1,143 @@
+============================================================
+                      GIT STASH NOTES
+============================================================
+
+What is 'git stash'?
+------------------------------------------------------------
+'git stash' temporarily saves (stashes) your uncommitted 
+changes so you can switch branches, pull updates, or fix 
+something else without committing unfinished work.
+
+You can later reapply those changes exactly where you left off.
+
+
+Why use it?
+------------------------------------------------------------
+- You want to switch branches but your work is not ready to commit.
+- You need to pull the latest updates but have local modifications.
+- You’re experimenting and want to save progress temporarily.
+
+
+Common Commands
+------------------------------------------------------------
+git stash                   -> Stash tracked changes.
+git stash -u                -> Stash tracked + untracked changes.
+git stash save "message"    -> Stash with a custom message.
+git stash list              -> List all stashed entries.
+git stash show              -> Show summary of the latest stash.
+git stash show -p           -> Show detailed diff of stashed changes.
+git stash apply             -> Reapply most recent stash (keeps stash).
+git stash pop               -> Reapply and remove latest stash.
+git stash drop stash@{n}    -> Delete a specific stash.
+git stash clear             -> Remove all stashes.
+
+
+Notes
+------------------------------------------------------------
+- Stashes are indexed as stash@{0}, stash@{1}, etc.
+- By default, only tracked files are stashed. Use -u to include untracked.
+- Multiple stashes can be created; each is independent.
+
+
+============================================================
+        DIFFERENCE BETWEEN 'git stash apply' AND 'git stash pop'
+============================================================
+
+Both commands restore stashed changes into your working directory,
+but the difference is in what happens to the stash entry afterward.
+
+1. git stash apply
+   - Restores your changes.
+   - Keeps the stash in the stash list.
+   - Useful if you want to reuse or inspect the stash again.
+   Example:
+     git stash apply stash@{0}
+   Result:
+     Changes are restored, and the stash remains saved.
+
+2. git stash pop
+   - Restores your changes.
+   - Removes the stash from the list (if applied successfully).
+   - Useful when you no longer need the stash.
+   Example:
+     git stash pop
+   Result:
+     Changes are restored, and the stash entry is deleted.
+
+Important Notes:
+   - Both commands can cause merge conflicts if files changed since stashing.
+   - If 'pop' fails due to conflicts, the stash is NOT deleted.
+   - You can apply or pop a specific stash with its index:
+       git stash apply stash@{2}
+       git stash pop stash@{1}
+
+Summary Table:
+   Command             Restores Changes   Keeps Stash   Deletes Stash
+   -------------------------------------------------------------------
+   git stash apply     Yes                Yes           No
+   git stash pop       Yes                No            Yes (if success)
+
+Tip:
+   If you’re unsure, use 'git stash apply' first to test,
+   then 'git stash drop stash@{n}' once you’re done.
+
+
+============================================================
+                HANDS-ON PRACTICE SCENARIO
+============================================================
+
+Goal:
+------------------------------------------------------------
+Learn how to use 'git stash' in a practical workflow.
+
+
+Steps:
+------------------------------------------------------------
+
+1. Create a test repository
+   mkdir git-stash-demo
+   cd git-stash-demo
+   git init
+
+2. Create an initial file
+   echo "Hello main branch" > app.txt
+   git add app.txt
+   git commit -m "Initial commit"
+
+3. Create and switch to a new branch
+   git switch -c feature-update
+
+4. Make some changes (do not commit yet)
+   echo "New feature in progress..." >> app.txt
+
+5. Imagine your team asks for a quick fix on 'main'
+   git stash save "WIP: feature update in progress"
+   git switch main
+
+6. Make a quick fix on main
+   echo "Hotfix applied" >> app.txt
+   git commit -am "Apply hotfix"
+   (Note: '-am' means 'add and commit' for tracked files only.)
+
+7. Return to your feature branch and restore your changes
+   git switch feature-update
+   git stash list
+   git stash pop
+
+8. Continue working and commit when ready
+   git add .
+   git commit -m "Continue feature after hotfix"
+
+
+Summary
+------------------------------------------------------------
+- 'git stash' = temporary save for your local changes.
+- Use it when switching tasks, branches, or fixing urgent bugs.
+- 'git stash apply' restores changes but keeps the stash.
+- 'git stash pop' restores and removes the stash.
+- Manage stashes with 'list', 'apply', 'pop', and 'drop' commands.
+
+============================================================
+End of Notes
+============================================================
+
