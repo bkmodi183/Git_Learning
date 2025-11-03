@@ -30,4 +30,8 @@ Git Commmands:
 25. git revert <Hash_id> -> Undo committed changes (adds new)
 26. git reset <Hash_id> -> Remove commits / rewrite history. To got the the older commit state.
 27. git merge --squash <branch_name> && git commit -m "Commit Message" -> To sqaush the unwated commits from a branch while merging 
-    and merging it to the main (or any other branch) with a single commit message which represents the unwanted commits. 
+    and merging it to the main (or any other branch) with a single commit message which represents the unwanted commits.
+28. git swtich -c <branch_name> -> To create and switch to new branch
+29. git switch <branch_name> -> Switch to another branch
+30. git stash -> Stash tracked changes. Used when we're working on WD and want to switch to another branch and the work is still in                   progress so to save the work  in WD itself without commiting it we use stash command.
+31. git stash save "message"    -> Same as above but Stash with a custom message.
