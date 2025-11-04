@@ -35,3 +35,4 @@ Git Commmands:
 29. git switch <branch_name> -> Switch to another branch
 30. git stash -> Stash tracked changes. Used when we're working on WD and want to switch to another branch and the work is still in                   progress so to save the work  in WD itself without commiting it we use stash command.
 31. git stash save "message"    -> Same as above but Stash with a custom message.
+32. git diff ->  git diff command helps to identify the differences between the state's repositories or files
