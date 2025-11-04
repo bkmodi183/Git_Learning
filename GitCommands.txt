@@ -36,3 +36,5 @@ Git Commmands:
 30. git stash -> Stash tracked changes. Used when we're working on WD and want to switch to another branch and the work is still in                   progress so to save the work  in WD itself without commiting it we use stash command.
 31. git stash save "message"    -> Same as above but Stash with a custom message.
 32. git diff ->  git diff command helps to identify the differences between the state's repositories or files
+33. To avoid giving PAT token everytime when you are pushing or pulling from remote, run the below command:
+    git remote set-url origin https://<your-username>:<your-PAT>@github.com/<your-username>/Docker_Learning<Repository_Name>.git
