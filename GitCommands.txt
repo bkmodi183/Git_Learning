@@ -38,3 +38,5 @@ Git Commmands:
 32. git diff ->  git diff command helps to identify the differences between the state's repositories or files
 33. To avoid giving PAT token everytime when you are pushing or pulling from remote, run the below command:
     git remote set-url origin https://<your-username>:<your-PAT>@github.com/<your-username>/Docker_Learning<Repository_Name>.git
+34. git branch -D <branch_name> -> To delete the local branch
+35. git push origin --delete <branch-name> -> To delete the remote branch
