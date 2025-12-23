@@ -1,4 +1,10 @@
-Git Commmands:
+------------------------------------------------------------------------------------------------------------------------------
+
+Git is Global Information also knows as SCM (Source Code Management) toll.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Git Commmands: 
 
 1. git init -> to initialize git in your local repository.
 2. git clone <repository url>
