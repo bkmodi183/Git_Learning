@@ -52,6 +52,7 @@ Command:
 
 Explanation:
   - --soft : Moves the HEAD pointer to the specified commit but keeps changes staged.
+  - --Mixed: Moves the HEAD pointer to the specified commit and keeps the changes into unstagged (untracked) state.
   - --hard : Moves the HEAD pointer AND removes all changes after that commit.
 
 Warning:
