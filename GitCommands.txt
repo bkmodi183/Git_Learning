@@ -1,6 +1,6 @@
 ------------------------------------------------------------------------------------------------------------------------------
 
-Git is Global Information Tracker also knows as SCM (Source Code Management) toll.
+Git is Global Information Tracker also knows as SCM (Source Code Management) toll and VCS(Version Control System).
 
 ------------------------------------------------------------------------------------------------------------------------------
 
@@ -12,37 +12,43 @@ Git Commmands:
    When we're working in file it's called as working directory space. Now once our task is finished in working directory
    we stage the file and then finally to repository.
 4. git add <filename> (To stage a specific file)
+5. git rm --cached <file_name> -> To unstaged a staged file
    git add . (To stage all the file present which are not staged in the working directory)
-5. git commit -m "Commit message" (Here "-m" flag is used to write the commit message)
-6. git status -> To check the status whether the files are stagged or commited.
-7. git branch -> To check which branch you're currently working in
-8. git checkout branch_name -> to switch branch
-9. git checkout -b <branch_name> -> this commad create a new branch and switch to it
-10. git branch -d <branch_name> -> to delete the branch in your local repository
-11. git config --global user.name "username" -> to set the global username. Helpful to track which user made changes.
-12. git config --global user.email "email" -> to set the global user email id
-13. git remote -v -> show remote origin url if your local repo is linked with remote.
-14. git remote add origin <remote_url> -> To add remote origin URL
-15. git remote remove origin -> Remove origin URL
-16. git fetch -> Fetch all the remote branches.
-17. git push origin <branch_name> -> to push the local changes to remote branch
-18. git pull origin <branch_name> -> to pull the remote changes to local branch
-19. git log --oneline -> to see the logs
-20. git push origin --delete branch1 -> to delete the remote branch
-21. git merge <branch_name> -> First checkout to the branch to which you want to merge. Like if you want to merge the changes to main    branch first switch to main branch and then merge.
-22. git rebase <branch_name> -> This also merge the branches but it will merge in liner fashion.
-23. git cherry-pick <Hash_id> -> To bring a specific commit to a branch.
-24. git restore <Hash_id> -> To undo uncommitted changes.
-25. git revert <Hash_id> -> Undo committed changes (adds new)
-26. git reset <Hash_id> -> Remove commits / rewrite history. To got the the older commit state.
-27. git merge --squash <branch_name> && git commit -m "Commit Message" -> To sqaush the unwated commits from a branch while merging 
+6. git commit -m "Commit message" (Here "-m" flag is used to write the commit message)
+7. git status -> To check the status whether the files are stagged or commited.
+8. git branch -> To check which branch you're currently working in
+9. git checkout branch_name -> to switch branch
+10. git checkout -b <branch_name> -> this commad create a new branch and switch to it
+11. git branch -d <branch_name> -> to delete the branch in your local repository
+12. git config --global user.name "username" -> to set the global username. Helpful to track which user made changes.
+13. git config --global user.email "email" -> to set the global user email id
+14. git remote -v -> show remote origin url if your local repo is linked with remote.
+15. git remote add origin <remote_url> -> To add remote origin URL
+16. git remote remove origin -> Remove origin URL
+17. git fetch -> Fetch all the remote branches.
+18. git push origin <branch_name> -> to push the local changes to remote branch
+19. git pull origin <branch_name> -> to pull the remote changes to local branch
+20. git log --oneline -> to see the logs
+21. git push origin --delete branch1 -> to delete the remote branch
+22. git merge <branch_name> -> First checkout to the branch to which you want to merge. Like if you want to merge the changes to main    branch first switch to main branch and then merge.
+23. git rebase <branch_name> -> This also merge the branches but it will merge in liner fashion.
+24. git cherry-pick <Hash_id> -> To bring a specific commit to a branch.
+25. git restore <Hash_id> -> To undo uncommitted changes.
+26. git revert <Hash_id> -> Undo committed changes (adds new)
+27. git reset <Hash_id> -> Remove commits / rewrite history. To got the the older commit state.
+28. git merge --squash <branch_name> && git commit -m "Commit Message" -> To sqaush the unwated commits from a branch while merging 
     and merging it to the main (or any other branch) with a single commit message which represents the unwanted commits.
-28. git swtich -c <branch_name> -> To create and switch to new branch
-29. git switch <branch_name> -> Switch to another branch
-30. git stash -> Stash tracked changes. Used when we're working on WD and want to switch to another branch and the work is still in                   progress so to save the work  in WD itself without commiting it we use stash command.
-31. git stash save "message"    -> Same as above but Stash with a custom message.
-32. git diff ->  git diff command helps to identify the differences between the state's repositories or files
-33. To avoid giving PAT token everytime when you are pushing or pulling from remote, run the below command:
+29. git swtich -c <branch_name> -> To create and switch to new branch
+30. git switch <branch_name> -> Switch to another branch
+31. git stash -> Stash tracked changes. Used when we're working on WD and want to switch to another branch and the work is still in                   progress so to save the work  in WD itself without commiting it we use stash command.
+32. git stash save "message"    -> Same as above but Stash with a custom message.
+33. git diff ->  git diff command helps to identify the differences between the state's repositories or files
+34. To avoid giving PAT token everytime when you are pushing or pulling from remote, run the below command:
     git remote set-url origin https://<your-username>:<your-PAT>@github.com/<your-username>/Docker_Learning<Repository_Name>.git
-34. git branch -D <branch_name> -> To delete the local branch
-35. git push origin --delete <branch-name> -> To delete the remote branch
+35. git branch -D <branch_name> -> To delete the local branch
+36. git push origin --delete <branch-name> -> To delete the remote branch
+37. git clone <url> -> to clone a remote git repository to the local git.
+38. git fork <url> -> to fork a remote git repository to another remote git repository.
+    Note: Remote to local is git clone & Remote to Remote is git fork.
+          git clone creates a linked copy which means your remote and local repo are interconnected, while git fork creates an 
+          independent copy which means it creates a new repo altogether whose owner is the person who is forking. 
