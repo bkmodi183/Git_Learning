@@ -1,6 +1,6 @@
 ------------------------------------------------------------------------------------------------------------------------------
 
-Git is Global Information also knows as SCM (Source Code Management) toll.
+Git is Global Information Tracker also knows as SCM (Source Code Management) toll.
 
 ------------------------------------------------------------------------------------------------------------------------------
 
