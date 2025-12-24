@@ -115,6 +115,105 @@ Summary:
   on your own local branch.
 
 --------------------------------------------
+Real Time scenario 
+--------------------------------------------
+
+# Git Rebase – Target Branch, Current Branch & Common Ancestor Rule
+
+## Scenario
+
+main branch:
+A → B → C → D → H
+
+feat branch:
+A → B → C → E → F → G
+
+Common ancestor (merge-base):
+A → B → C
+
+---
+
+## Core Rule of `git rebase`
+
+Git rebase always follows these steps:
+
+1. Find the **common ancestor** (merge-base) of the current branch and the target branch.
+2. Identify commits that are **unique to the current branch** (after the common ancestor).
+3. **Rewrite and replay those commits** on top of the target branch.
+
+Only commits from the **current branch** are rewritten.
+Commits from the **target branch are never changed**.
+
+---
+
+## Example 1: Rebase `main` onto `feat`
+
+Command:
+git checkout main
+git rebase feat
+
+- Current branch: main
+- Target branch: feat
+- Common ancestor: A-B-C
+
+Commits unique to main:
+D → H
+
+Result:
+A → B → C → E → F → G → D' → H'
+
+Explanation:
+- D and H are rewritten (You can verify this after matching the hash id before and after rebasing. It will change for D and H)
+- E, F, G remain unchanged
+- A, B, C remain unchanged
+
+---
+
+## Example 2: Rebase `feat` onto `main`
+
+Command:
+git checkout feat
+git rebase main
+
+- Current branch: feat
+- Target branch: main
+- Common ancestor: A-B-C
+
+Commits unique to feat:
+E → F → G
+
+Result:
+A → B → C → D → H → E' → F' → G'
+
+Explanation:
+- E, F, G are rewritten
+- D and H remain unchanged
+- A, B, C remain unchanged
+
+---
+
+## Key Rules to Remember
+
+- The **common ancestor** is the cut-off point.
+- Commits before the ancestor are never touched.
+- Commits after the ancestor on the **current branch** are rewritten.
+- Commits on the **target branch** are preserved as-is.
+- Rebase creates a **linear history** and **no merge commit**.
+
+---
+
+## One-Line Mental Model
+
+git rebase X =  
+"Take my commits (current branch) and put them on top of X (target branch)."
+
+---
+
+## Warning
+
+Never rebase a branch that is already shared with others, because rebase rewrites commit history.
+
+--------------------------------------------
 End of Notes
 --------------------------------------------
 
