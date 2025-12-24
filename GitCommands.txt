@@ -41,7 +41,8 @@ Git Commmands:
     and merging it to the main (or any other branch) with a single commit message which represents the unwanted commits.
 29. git swtich -c <branch_name> -> To create and switch to new branch
 30. git switch <branch_name> -> Switch to another branch
-31. git stash -> Stash tracked changes. Used when we're working on WD and want to switch to another branch and the work is still in                   progress so to save the work  in WD itself without commiting it we use stash command.
+31. git stash -> Stash tracked changes. Used when we're working on WD and want to switch to another branch and the work is still 
+    in  progress so to save the work  in WD itself without commiting it we use stash command.
 32. git stash save "message"    -> Same as above but Stash with a custom message.
 33. git diff ->  git diff command helps to identify the differences between the state's repositories or files
 34. To avoid giving PAT token everytime when you are pushing or pulling from remote, run the below command:
@@ -55,3 +56,4 @@ Git Commmands:
           independent copy which means it creates a new repo altogether whose owner is the person who is forking. 
 39. git branch -M main -> to rename the default branch from master to Main in the remote.
 40. git restore --staged <file-name> -> to unstage a staged file.
+41. git log --graph --oneline --all --decorate -> to see the graphical view of branching.
