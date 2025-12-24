@@ -41,6 +41,20 @@ Note:
   - Safe for shared repositories.
   - Does not remove commits — instead, it adds a new “undo” commit.
 
+eg. Practical scneario: 
+     Let's say you have one file named test.txt with 5 lines each committed separetely and below is how the file looks like 
+
+    "This is line 1   -> commit1
+     This is line 2   -> commit2
+     This is wrong line -> commit3
+     This is line 3 -> commit4
+     This is line 4: -> commit5
+
+Now, let's here line 3 is wrong line which was committed and I want to revert the changes so git revert <commit4> then
+open the file in vim, remove the line 3 alone with HEAD and arrows and then save.
+Once save come out do git status if conflict fixed do git revert --continue then nano editor will open. Now do ctrl+x and enter.
+Revert is done now.
+
 
 3️⃣ RESET
 ------------
