@@ -7,6 +7,10 @@
 Use when you’ve made some changes in a file that are NOT committed yet 
 and you want to restore the file to its previous state.
 
+Eg. Let's say you have one file which has one line "this is a file" and this is commited.
+    Now you have added one more line to it "This is second line". Since till now you have
+    not staged the file with git add, so you can check the changes made with git diff command
+    and if the changes are not require simply we can restore the file to its previous committed state.
 Steps:
   1. Check what has changed:
        git diff
