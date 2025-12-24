@@ -52,3 +52,4 @@ Git Commmands:
     Note: Remote to local is git clone & Remote to Remote is git fork.
           git clone creates a linked copy which means your remote and local repo are interconnected, while git fork creates an 
           independent copy which means it creates a new repo altogether whose owner is the person who is forking. 
+39. git branch -M main -> to rename the default branch from master to Main in the remote.
