@@ -1,6 +1,6 @@
---------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
 Git Commands: git merge and git rebase
---------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
 
 1. Definition of git merge
 ---------------------------
@@ -45,9 +45,9 @@ To bring all those features into 'main', you can use:
     git merge dev
 This adds a merge commit that records the integration of development work into the production branch.
 
---------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
 2. Definition of git rebase
-----------------------------
+------------------------------------------------------------------------------------------------------------------------------
 The 'git rebase' command is used to move or reapply commits from one branch onto another base commit.
 Instead of merging histories together, rebasing rewrites the commit history to make it appear as if
 your work was created on top of the latest version of another branch.
@@ -114,13 +114,13 @@ Summary:
 - Use 'git rebase' when you want to maintain a clean, linear history and are working
   on your own local branch.
 
---------------------------------------------
-Real Time scenario 
---------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+                                                 Real Time scenario (Hands on Example)
+------------------------------------------------------------------------------------------------------------------------------
 
-# Git Rebase – Target Branch, Current Branch & Common Ancestor Rule
+Git Rebase – Target Branch, Current Branch & Common Ancestor Rule
 
-## Scenario
+Scenario
 
 main branch:
 A → B → C → D → H
@@ -131,9 +131,9 @@ A → B → C → E → F → G
 Common ancestor (merge-base):
 A → B → C
 
----
+------------------------------------------------------------------------------------------------------------------------------
 
-## Core Rule of `git rebase`
+Core Rule of `git rebase`
 
 Git rebase always follows these steps:
 
@@ -144,9 +144,9 @@ Git rebase always follows these steps:
 Only commits from the **current branch** are rewritten.
 Commits from the **target branch are never changed**.
 
----
+------------------------------------------------------------------------------------------------------------------------------
 
-## Example 1: Rebase `main` onto `feat`
+Example 1: Rebase `main` onto `feat`
 
 Command:
 git checkout main
@@ -167,9 +167,9 @@ Explanation:
 - E, F, G remain unchanged
 - A, B, C remain unchanged
 
----
+------------------------------------------------------------------------------------------------------------------------------
 
-## Example 2: Rebase `feat` onto `main`
+Example 2: Rebase `feat` onto `main`
 
 Command:
 git checkout feat
@@ -190,9 +190,9 @@ Explanation:
 - D and H remain unchanged
 - A, B, C remain unchanged
 
----
+------------------------------------------------------------------------------------------------------------------------------
 
-## Key Rules to Remember
+Key Rules to Remember
 
 - The **common ancestor** is the cut-off point.
 - Commits before the ancestor are never touched.
@@ -200,20 +200,13 @@ Explanation:
 - Commits on the **target branch** are preserved as-is.
 - Rebase creates a **linear history** and **no merge commit**.
 
----
+-------------------------------------------------------------------------------------------------------------------------------
 
-## One-Line Mental Model
+One-Line Mental Model: git rebase X =  "Take my commits (current branch) and put them on top of X (target branch)."
 
-git rebase X =  
-"Take my commits (current branch) and put them on top of X (target branch)."
-
----
-
-## Warning
-
-Never rebase a branch that is already shared with others, because rebase rewrites commit history.
-
---------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+Warning: Never rebase a branch that is already shared with others, because rebase rewrites commit history.
+------------------------------------------------------------------------------------------------------------------------------
 End of Notes
---------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
 
