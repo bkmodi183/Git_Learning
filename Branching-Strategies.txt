@@ -1,8 +1,8 @@
----------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
 
-Git branching strategy uses environment-specific long-lived branches (master, staging, dev) plus short-lived feature/hotfix branches 
-for development workflow.
----------------------------------------------------------------------------------------------------------------------------------------
+Git branching strategy uses environment-specific long-lived branches (master, staging, dev) plus short-lived feature/hotfix 
+branches for development workflow.
+------------------------------------------------------------------------------------------------------------------------------
 
 Branching Diagram
 
@@ -15,7 +15,7 @@ Environments / Branches Flow
   ↑           ↑           ↑             ↑
   └─ merge ───┘   merge ──┘          branch from dev
 
----------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
 
 Branch Roles
 
@@ -23,7 +23,7 @@ Branch Roles
 - staging: Pre-production testing environment; receives merges from dev after all tests pass.
 - dev: Development integration branch; all feature branches created from and merged back to dev.
 
----------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
 
 Hotfix Process
 
@@ -32,4 +32,4 @@ Hotfix Process
 - Fix bug, test locally, then merge hotfix into master, staging, and dev to keep all branches synchronized.
 - After hotfix merge to dev: pull changes and continue feature/blog work on dev branch.
 
----------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
