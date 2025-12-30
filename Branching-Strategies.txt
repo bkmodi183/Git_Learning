@@ -1,0 +1,35 @@
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Git branching strategy uses environment-specific long-lived branches (master, staging, dev) plus short-lived feature/hotfix branches 
+for development workflow.
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Branching Diagram
+
+
+Environments / Branches Flow
+
+[master]    [staging]     [dev]      [feat/azure/devops/etc]
+  ↓           ↓           ↓             ↓
+ prod       staging       dev        feature branches
+  ↑           ↑           ↑             ↑
+  └─ merge ───┘   merge ──┘          branch from dev
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Branch Roles
+
+- master: Production-ready code only; updated by merging tested changes from staging.
+- staging: Pre-production testing environment; receives merges from dev after all tests pass.
+- dev: Development integration branch; all feature branches created from and merged back to dev.
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Hotfix Process
+
+- Hotfix occurs when production issue detected on master branch.
+- Create hotfix branch from master (e.g., hotfix/prod-bug).  
+- Fix bug, test locally, then merge hotfix into master, staging, and dev to keep all branches synchronized.
+- After hotfix merge to dev: pull changes and continue feature/blog work on dev branch.
+
+---------------------------------------------------------------------------------------------------------------------------------------
