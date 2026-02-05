@@ -144,6 +144,17 @@ A---B---C   (main, origin/main)
 * You want a quick update
 * You trust the remote changes
 * You are working on a personal or low-risk branch
+---
+
+## Difference Between Git Fetch and Git Pull
+
+| Git Fetch                                                                                                  | Git Pull                                                                                              |
+| ---------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| Fetches all changes from the remote repository **without merging** them into the current working directory | Fetches all changes from the remote repository **and merges** them into the current working directory |
+| Updates only the repository data inside the **`.git` directory**                                           | Updates the **working directory** and the local branch                                                |
+| Allows review of commits and changes before merging                                                        | Updates changes in the local repository immediately                                                   |
+| Safer operation as it does not affect local code                                                           | May cause merge conflicts immediately                                                                 |
+| Command: `git fetch <remote>`                                                                              | Command: `git pull <remote> <branch>`                                                                 |
 
 ---
 
@@ -164,3 +175,4 @@ A---B---C   (main, origin/main)
 * **`git pull`** is convenient but should be used carefully, especially in collaborative projects.
 
 ---
+
