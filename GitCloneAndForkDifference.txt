@@ -1,0 +1,316 @@
+# Git Clone vs Git Fork
+
+## Overview
+
+Both **Git Clone** and **Git Fork** are used to get a copy of a Git repository, but they serve different purposes.
+
+| Feature | Git Clone | Git Fork |
+|---------|-----------|----------|
+| What it does | Creates a local copy of a repository | Creates your own copy of a repository on GitHub |
+| Location | Your local computer | Your GitHub account |
+| Ownership | Original repository remains the owner | You become the owner of the forked repository |
+| Common Use | Working on repositories you already have access to | Contributing to open-source projects without write access |
+| Command | `git clone <repository-url>` | Fork is performed using the GitHub UI |
+
+---
+
+# Git Clone
+
+## Definition
+
+`git clone` downloads an existing Git repository from a remote server (such as GitHub) to your local machine.
+
+### Syntax
+
+```bash
+git clone https://github.com/username/repository.git
+```
+
+### What happens?
+
+- Downloads the complete repository
+- Downloads all branches and commit history
+- Automatically sets the original repository as `origin`
+- Creates a local working directory
+
+### Example
+
+```bash
+git clone https://github.com/octocat/Hello-World.git
+```
+
+Result:
+
+```
+Hello-World/
+    .git/
+    README.md
+    ...
+```
+
+---
+
+# Git Fork
+
+## Definition
+
+A **Fork** creates a copy of someone else's GitHub repository under **your GitHub account**.
+
+Unlike cloning, a fork happens **on GitHub**, not on your computer.
+
+Example:
+
+Original Repository
+
+```
+github.com/microsoft/vscode
+```
+
+Forked Repository
+
+```
+github.com/yourusername/vscode
+```
+
+Now you own this copy.
+
+You can then clone your fork locally.
+
+---
+
+# Relationship Between Fork and Clone
+
+Most open-source contributions follow this workflow:
+
+```
+Original Repository
+        │
+        ▼
+Fork on GitHub
+        │
+        ▼
+Clone your Fork
+        │
+        ▼
+Make Changes
+        │
+        ▼
+Push Changes
+        │
+        ▼
+Create Pull Request
+```
+
+---
+
+# Real-Life Example
+
+Imagine your friend has created a recipe book.
+
+## Git Clone
+
+Your friend gives you permission to work together.
+
+You simply download the recipe book to your laptop.
+
+You edit it and send changes directly back.
+
+This is similar to **git clone**.
+
+---
+
+## Git Fork
+
+Suppose the recipe book belongs to a famous chef.
+
+You cannot edit the original book.
+
+Instead:
+
+- Make your own copy
+- Add your improvements
+- Ask the chef to include your changes
+
+This is exactly how **Fork** works.
+
+---
+
+# Practical Hands-On
+
+## Scenario 1: Git Clone
+
+### Step 1
+
+Copy repository URL
+
+Example:
+
+```
+https://github.com/octocat/Hello-World.git
+```
+
+### Step 2
+
+Clone it
+
+```bash
+git clone https://github.com/octocat/Hello-World.git
+```
+
+### Step 3
+
+Move into the project
+
+```bash
+cd Hello-World
+```
+
+### Step 4
+
+Check remote
+
+```bash
+git remote -v
+```
+
+Output:
+
+```
+origin https://github.com/octocat/Hello-World.git
+```
+
+---
+
+## Scenario 2: Git Fork
+
+### Step 1
+
+Open the repository on GitHub.
+
+Example:
+
+```
+https://github.com/microsoft/vscode
+```
+
+### Step 2
+
+Click the **Fork** button.
+
+GitHub creates:
+
+```
+https://github.com/yourusername/vscode
+```
+
+### Step 3
+
+Clone your fork
+
+```bash
+git clone https://github.com/yourusername/vscode.git
+```
+
+### Step 4
+
+Move into the project
+
+```bash
+cd vscode
+```
+
+### Step 5
+
+Create a new branch
+
+```bash
+git checkout -b feature/readme-update
+```
+
+### Step 6
+
+Make changes
+
+For example, edit the README file.
+
+### Step 7
+
+Commit changes
+
+```bash
+git add .
+git commit -m "Updated README"
+```
+
+### Step 8
+
+Push changes
+
+```bash
+git push origin feature/readme-update
+```
+
+### Step 9
+
+Open GitHub
+
+GitHub will display:
+
+```
+Compare & Pull Request
+```
+
+Click it and create a Pull Request.
+
+---
+
+# Key Differences
+
+| Git Clone | Git Fork |
+|-----------|-----------|
+| Local copy | GitHub copy |
+| Uses Git command | Uses GitHub interface |
+| Original owner stays the same | You become owner of the fork |
+| Used for repositories you can directly work on | Used for contributing to repositories you don't own |
+| Creates `origin` remote | Creates a new repository under your account |
+
+---
+
+# Interview Questions
+
+### 1. What is `git clone`?
+
+It downloads a remote Git repository to your local machine.
+
+---
+
+### 2. What is a Git fork?
+
+A GitHub feature that creates your own copy of another user's repository.
+
+---
+
+### 3. Can you clone without forking?
+
+Yes. If you have access to the repository, you can directly clone it.
+
+---
+
+### 4. Can you fork without cloning?
+
+Yes. A fork exists on GitHub. Cloning is optional if you want to work locally.
+
+---
+
+### 5. Why is forking commonly used in open-source projects?
+
+Because contributors usually don't have write access to the original repository. They fork the project, make changes in their own copy, and submit a Pull Request to request that the maintainers merge their changes.
+
+---
+
+# Summary
+
+- **Git Clone** creates a local copy of a repository on your computer.
+- **Git Fork** creates a copy of a repository in your own GitHub account.
+- A common open-source workflow is: **Fork → Clone → Create Branch → Commit → Push → Pull Request**.
+- Use **Clone** when you have direct access to a repository, and **Fork** when you want to contribute to a repository you don't own.
